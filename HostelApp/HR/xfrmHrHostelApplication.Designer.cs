@@ -196,7 +196,7 @@
             this.gdcMain.MainView = this.gdvMain;
             this.gdcMain.Margin = new System.Windows.Forms.Padding(5);
             this.gdcMain.Name = "gdcMain";
-            this.gdcMain.Size = new System.Drawing.Size(989, 379);
+            this.gdcMain.Size = new System.Drawing.Size(995, 385);
             this.gdcMain.TabIndex = 56;
             this.gdcMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gdvMain,
@@ -371,7 +371,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(105, 150);
+            this.labelControl2.Location = new System.Drawing.Point(106, 150);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(42, 13);
@@ -425,7 +425,7 @@
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(94, 176);
+            this.labelControl8.Location = new System.Drawing.Point(117, 176);
             this.labelControl8.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(31, 13);
@@ -465,6 +465,10 @@
             this.dteDoB.Location = new System.Drawing.Point(155, 120);
             this.dteDoB.Margin = new System.Windows.Forms.Padding(5);
             this.dteDoB.Name = "dteDoB";
+            this.dteDoB.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.dteDoB.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.dteDoB.Properties.Appearance.Options.UseBackColor = true;
+            this.dteDoB.Properties.Appearance.Options.UseForeColor = true;
             this.dteDoB.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dteDoB.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -495,6 +499,10 @@
             this.txtEmail.Location = new System.Drawing.Point(492, 94);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(5);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtEmail.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtEmail.Properties.Appearance.Options.UseBackColor = true;
+            this.txtEmail.Properties.Appearance.Options.UseForeColor = true;
             this.txtEmail.Size = new System.Drawing.Size(250, 20);
             this.txtEmail.TabIndex = 11;
             // 
@@ -503,6 +511,10 @@
             this.txtMobileNo.Location = new System.Drawing.Point(492, 120);
             this.txtMobileNo.Margin = new System.Windows.Forms.Padding(5);
             this.txtMobileNo.Name = "txtMobileNo";
+            this.txtMobileNo.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtMobileNo.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtMobileNo.Properties.Appearance.Options.UseBackColor = true;
+            this.txtMobileNo.Properties.Appearance.Options.UseForeColor = true;
             this.txtMobileNo.Size = new System.Drawing.Size(250, 20);
             this.txtMobileNo.TabIndex = 12;
             // 
@@ -511,6 +523,10 @@
             this.txtParentContact.Location = new System.Drawing.Point(155, 250);
             this.txtParentContact.Margin = new System.Windows.Forms.Padding(5);
             this.txtParentContact.Name = "txtParentContact";
+            this.txtParentContact.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtParentContact.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtParentContact.Properties.Appearance.Options.UseBackColor = true;
+            this.txtParentContact.Properties.Appearance.Options.UseForeColor = true;
             this.txtParentContact.Size = new System.Drawing.Size(243, 20);
             this.txtParentContact.TabIndex = 8;
             // 
@@ -519,6 +535,10 @@
             this.txtParentDetails.Location = new System.Drawing.Point(155, 224);
             this.txtParentDetails.Margin = new System.Windows.Forms.Padding(5);
             this.txtParentDetails.Name = "txtParentDetails";
+            this.txtParentDetails.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtParentDetails.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtParentDetails.Properties.Appearance.Options.UseBackColor = true;
+            this.txtParentDetails.Properties.Appearance.Options.UseForeColor = true;
             this.txtParentDetails.Size = new System.Drawing.Size(243, 20);
             this.txtParentDetails.TabIndex = 7;
             // 
@@ -527,6 +547,10 @@
             this.txtIDNo.Location = new System.Drawing.Point(155, 172);
             this.txtIDNo.Margin = new System.Windows.Forms.Padding(5);
             this.txtIDNo.Name = "txtIDNo";
+            this.txtIDNo.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtIDNo.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtIDNo.Properties.Appearance.Options.UseBackColor = true;
+            this.txtIDNo.Properties.Appearance.Options.UseForeColor = true;
             this.txtIDNo.Size = new System.Drawing.Size(243, 20);
             this.txtIDNo.TabIndex = 5;
             // 
@@ -535,6 +559,10 @@
             this.txtLastName.Location = new System.Drawing.Point(155, 68);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(5);
             this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtLastName.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtLastName.Properties.Appearance.Options.UseBackColor = true;
+            this.txtLastName.Properties.Appearance.Options.UseForeColor = true;
             this.txtLastName.Size = new System.Drawing.Size(243, 20);
             this.txtLastName.TabIndex = 1;
             // 
@@ -543,6 +571,10 @@
             this.txtFirstName.Location = new System.Drawing.Point(155, 42);
             this.txtFirstName.Margin = new System.Windows.Forms.Padding(5);
             this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtFirstName.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtFirstName.Properties.Appearance.Options.UseBackColor = true;
+            this.txtFirstName.Properties.Appearance.Options.UseForeColor = true;
             this.txtFirstName.Size = new System.Drawing.Size(202, 20);
             this.txtFirstName.TabIndex = 0;
             // 
@@ -551,6 +583,10 @@
             this.txtOtherName.Location = new System.Drawing.Point(155, 94);
             this.txtOtherName.Margin = new System.Windows.Forms.Padding(5);
             this.txtOtherName.Name = "txtOtherName";
+            this.txtOtherName.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtOtherName.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtOtherName.Properties.Appearance.Options.UseBackColor = true;
+            this.txtOtherName.Properties.Appearance.Options.UseForeColor = true;
             this.txtOtherName.Size = new System.Drawing.Size(243, 20);
             this.txtOtherName.TabIndex = 2;
             // 
@@ -559,6 +595,10 @@
             this.txtEmergencyContact.Location = new System.Drawing.Point(155, 198);
             this.txtEmergencyContact.Margin = new System.Windows.Forms.Padding(5);
             this.txtEmergencyContact.Name = "txtEmergencyContact";
+            this.txtEmergencyContact.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtEmergencyContact.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtEmergencyContact.Properties.Appearance.Options.UseBackColor = true;
+            this.txtEmergencyContact.Properties.Appearance.Options.UseForeColor = true;
             this.txtEmergencyContact.Size = new System.Drawing.Size(243, 20);
             this.txtEmergencyContact.TabIndex = 6;
             // 
@@ -569,7 +609,11 @@
             this.txtRmks.Location = new System.Drawing.Point(492, 172);
             this.txtRmks.Margin = new System.Windows.Forms.Padding(5);
             this.txtRmks.Name = "txtRmks";
-            this.txtRmks.Size = new System.Drawing.Size(505, 134);
+            this.txtRmks.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtRmks.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtRmks.Properties.Appearance.Options.UseBackColor = true;
+            this.txtRmks.Properties.Appearance.Options.UseForeColor = true;
+            this.txtRmks.Size = new System.Drawing.Size(511, 134);
             this.txtRmks.TabIndex = 14;
             // 
             // labelControl12
@@ -585,6 +629,10 @@
             // 
             this.cbxGender.Location = new System.Drawing.Point(492, 42);
             this.cbxGender.Name = "cbxGender";
+            this.cbxGender.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.cbxGender.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.cbxGender.Properties.Appearance.Options.UseBackColor = true;
+            this.cbxGender.Properties.Appearance.Options.UseForeColor = true;
             this.cbxGender.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxGender.Size = new System.Drawing.Size(250, 20);
@@ -617,6 +665,10 @@
             // 
             this.cbxOccupation.Location = new System.Drawing.Point(492, 68);
             this.cbxOccupation.Name = "cbxOccupation";
+            this.cbxOccupation.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.cbxOccupation.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.cbxOccupation.Properties.Appearance.Options.UseBackColor = true;
+            this.cbxOccupation.Properties.Appearance.Options.UseForeColor = true;
             this.cbxOccupation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxOccupation.Size = new System.Drawing.Size(250, 20);
@@ -625,10 +677,14 @@
             // 
             // pictureEdit1
             // 
-            this.pictureEdit1.Location = new System.Drawing.Point(776, 42);
+            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
+            this.pictureEdit1.Location = new System.Drawing.Point(759, 42);
             this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit1.Properties.InitialImageOptions.SvgImage = global::HostelApp.Properties.Resources.bo_customer;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(95, 98);
+            this.pictureEdit1.Size = new System.Drawing.Size(129, 125);
             this.pictureEdit1.TabIndex = 100;
             // 
             // txtAddress
@@ -636,6 +692,10 @@
             this.txtAddress.Location = new System.Drawing.Point(492, 147);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(5);
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtAddress.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtAddress.Properties.Appearance.Options.UseBackColor = true;
+            this.txtAddress.Properties.Appearance.Options.UseForeColor = true;
             this.txtAddress.Size = new System.Drawing.Size(250, 20);
             this.txtAddress.TabIndex = 13;
             // 
@@ -648,7 +708,7 @@
             this.panelControl1.Controls.Add(this.gdcMain);
             this.panelControl1.Location = new System.Drawing.Point(11, 325);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(993, 383);
+            this.panelControl1.Size = new System.Drawing.Size(999, 389);
             this.panelControl1.TabIndex = 101;
             // 
             // tablePanel1
@@ -673,7 +733,7 @@
             this.tablePanel1.Padding = new System.Windows.Forms.Padding(1);
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
-            this.tablePanel1.Size = new System.Drawing.Size(1016, 34);
+            this.tablePanel1.Size = new System.Drawing.Size(1022, 34);
             this.tablePanel1.TabIndex = 127;
             this.tablePanel1.UseSkinIndents = true;
             // 
@@ -705,12 +765,11 @@
             this.btnNew2.Appearance.BorderColor = System.Drawing.Color.Black;
             this.btnNew2.Appearance.Options.UseBorderColor = true;
             this.tablePanel1.SetColumn(this.btnNew2, 1);
-            this.btnNew2.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnNew2.ImageOptions.Image = global::HostelApp.Properties.Resources.newemployee_16x16;
-            this.btnNew2.Location = new System.Drawing.Point(93, 3);
+            this.btnNew2.Location = new System.Drawing.Point(93, 7);
             this.btnNew2.Name = "btnNew2";
             this.tablePanel1.SetRow(this.btnNew2, 0);
-            this.btnNew2.Size = new System.Drawing.Size(76, 28);
+            this.btnNew2.Size = new System.Drawing.Size(76, 20);
             this.btnNew2.TabIndex = 127;
             this.btnNew2.Text = "New";
             this.btnNew2.Click += new System.EventHandler(this.btnNew2_Click);
@@ -721,7 +780,10 @@
             this.tablePanel1.SetColumn(this.txtSearch, 3);
             this.txtSearch.Location = new System.Drawing.Point(273, 7);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.txtSearch.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtSearch.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txtSearch.Properties.Appearance.Options.UseBackColor = true;
+            this.txtSearch.Properties.Appearance.Options.UseForeColor = true;
             this.tablePanel1.SetRow(this.txtSearch, 0);
             this.txtSearch.Size = new System.Drawing.Size(96, 20);
             this.txtSearch.TabIndex = 125;
@@ -730,12 +792,11 @@
             // 
             this.btnEdit.AllowFocus = false;
             this.tablePanel1.SetColumn(this.btnEdit, 0);
-            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEdit.ImageOptions.Image = global::HostelApp.Properties.Resources.edit_16x16;
-            this.btnEdit.Location = new System.Drawing.Point(3, 3);
+            this.btnEdit.Location = new System.Drawing.Point(3, 6);
             this.btnEdit.Name = "btnEdit";
             this.tablePanel1.SetRow(this.btnEdit, 0);
-            this.btnEdit.Size = new System.Drawing.Size(83, 28);
+            this.btnEdit.Size = new System.Drawing.Size(86, 21);
             this.btnEdit.TabIndex = 123;
             this.btnEdit.Text = "Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -750,12 +811,13 @@
             this.btnSearch.Size = new System.Drawing.Size(66, 20);
             this.btnSearch.TabIndex = 124;
             this.btnSearch.Text = "Search";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.ImageOptions.Image = global::HostelApp.Properties.Resources.delete_16x16;
-            this.btnDelete.Location = new System.Drawing.Point(933, 42);
+            this.btnDelete.Location = new System.Drawing.Point(939, 42);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(69, 29);
@@ -767,6 +829,10 @@
             // 
             this.cbxIDType.Location = new System.Drawing.Point(155, 147);
             this.cbxIDType.Name = "cbxIDType";
+            this.cbxIDType.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.cbxIDType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.cbxIDType.Properties.Appearance.Options.UseBackColor = true;
+            this.cbxIDType.Properties.Appearance.Options.UseForeColor = true;
             this.cbxIDType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxIDType.Size = new System.Drawing.Size(243, 20);
@@ -787,6 +853,10 @@
             this.cbxTitle.Location = new System.Drawing.Point(361, 42);
             this.cbxTitle.Margin = new System.Windows.Forms.Padding(5);
             this.cbxTitle.Name = "cbxTitle";
+            this.cbxTitle.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.cbxTitle.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.cbxTitle.Properties.Appearance.Options.UseBackColor = true;
+            this.cbxTitle.Properties.Appearance.Options.UseForeColor = true;
             this.cbxTitle.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxTitle.Properties.DisplayFormat.FormatString = "d";
@@ -799,10 +869,12 @@
             // 
             // xfrmHrHostelApplication
             // 
+            this.Appearance.BackColor = System.Drawing.Color.White;
+            this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 720);
+            this.ClientSize = new System.Drawing.Size(1022, 726);
             this.Controls.Add(this.labelControl14);
             this.Controls.Add(this.cbxIDType);
             this.Controls.Add(this.btnDelete);

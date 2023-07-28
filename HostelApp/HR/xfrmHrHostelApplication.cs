@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid;
 
 namespace HostelApp.HR
 {
@@ -26,6 +27,7 @@ namespace HostelApp.HR
         private int selectedOccupationID;
         private int selectedIDTypeID;
         private int selectedTitleID;
+        private int selectedRowHandle; 
 
         private void PopComboBox(string columnName, ComboBoxEdit controlName, string tableName)
         {
@@ -51,6 +53,46 @@ namespace HostelApp.HR
             }
         }
 
+
+        private void DisableControls()
+        {
+            txtFirstName.Enabled = false;
+            txtLastName.Enabled = false;
+            txtOtherName.Enabled = false;
+            cbxGender.Enabled = false;
+            txtRmks.Enabled = false;
+            txtMobileNo.Enabled = false;
+            txtEmail.Enabled = false;
+            txtAddress.Enabled = false;
+            dteDoB.Enabled = false;
+            txtIDNo.Enabled = false;
+            cbxIDType.Enabled = false;
+            txtParentDetails.Enabled = false;
+            txtParentContact.Enabled = false;
+            txtEmergencyContact.Enabled = false;
+            cbxOccupation.Enabled = false;
+            cbxTitle.Enabled = false;
+        }
+
+        private void EmptyTextFields()
+        {
+            txtFirstName.Text = string.Empty;
+            txtLastName.Text = string.Empty;
+            txtOtherName.Text = string.Empty;
+            cbxGender.Text = string.Empty;
+            txtRmks.Text = string.Empty;
+            txtMobileNo.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            dteDoB.Text = string.Empty;
+            txtIDNo.Text = string.Empty;
+            cbxIDType.Text = string.Empty;
+            txtParentDetails.Text = string.Empty;
+            txtParentContact.Text = string.Empty;
+            txtEmergencyContact.Text = string.Empty;
+            cbxOccupation.Text = string.Empty;
+            cbxTitle.Text = string.Empty;
+        }
+
         private void EnableControls(Control control)
         {
             control.Enabled = true;
@@ -64,8 +106,7 @@ namespace HostelApp.HR
 
         private void SelectIDpkRow()
         {
-            int idpkx = (int)gdvMain.GetFocusedRowCellValue("pplIDpk");
-            int rowHandle = 0;
+            int rowHandle;
             
             for (rowHandle = 0; rowHandle < gdvMain.DataRowCount; rowHandle++)
             {
@@ -79,6 +120,32 @@ namespace HostelApp.HR
                 }
             }
         }
+
+        private void SelectIDpkRowX(int idpk)
+        {
+            selectedRowHandle = -1;
+
+            int rowHandle = -1;
+            for (int i = 0; i < gdvMain.DataRowCount; i++)
+            {
+                object cellValue = gdvMain.GetRowCellValue(i, "pplIDpk");
+                if (cellValue != null && cellValue.Equals(idpk))
+                {
+                    rowHandle = i;
+                    break;
+                }
+            }
+
+            if (rowHandle >= 0)
+            {
+                gdvMain.ClearSelection();
+                gdvMain.SelectRow(rowHandle);
+                gdvMain.MoveBy(rowHandle);
+                DisplayDataX(rowHandle);
+                selectedRowHandle = rowHandle;
+            }
+        }
+
 
         private int GetID(string name, string tableName, string columnName, string dataColumnName)
         {
@@ -129,13 +196,16 @@ namespace HostelApp.HR
                 int count = (int)comdx.ExecuteScalar();
                 ConnectionStringParameters.CloseConnection();
                 // Return true if a matching record is found (count > 0), false otherwise
+                
                 return count > 0;
                 
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
                 throw;
             }
+            
         }
 
         private void UpdateData()
@@ -147,7 +217,10 @@ namespace HostelApp.HR
                     ConnectionStringParameters.CloseConnection();
                     ConnectionStringParameters.OpenConnection();
                     int idpkx = (int)gdvMain.GetFocusedRowCellValue("pplIDpk");
-                    SqlCommand comdx = new SqlCommand("UPDATE tblHrPeople SET pplLastName = @pplLastName , pplOtherName = @pplOtherName , pplFirstName = @pplFirstName , pplDoB = @pplDoB , pplIDNo = @pplIDNo , pplIDTypefk = @pplIdt , pplMobileNo = @pplMobileNo , pplEmail = @pplEmail , pplParentDetails = @pplParentDetails , pplParentContact = @pplParentContact , pplEmergencyContact = @pplEmergencyContact , pplRmks = @pplRmks , pplOcupationIDpk = @ocpIDpk , pplGenderIDfk = @pplGenderIDfk, pplTitleIDfk = @pplTitleIDfk WHERE pplIDpk = @idpkx", ConnectionStringParameters.connStrx);
+                    SqlCommand comdx = new SqlCommand("UpdateRecordProcedure", ConnectionStringParameters.connStrx);
+
+                    comdx.CommandType = CommandType.StoredProcedure;
+
                     comdx.Parameters.AddWithValue("@pplLastName", txtLastName.Text);
                     comdx.Parameters.AddWithValue("@pplOtherName", txtOtherName.Text);
                     comdx.Parameters.AddWithValue("@pplFirstName", txtFirstName.Text);
@@ -166,15 +239,14 @@ namespace HostelApp.HR
                     comdx.Parameters.AddWithValue("@idpkx", idpkx);
                     comdx.ExecuteNonQuery();
                     GetData();
-                    DisplayData();
-                    SelectIDpkRow();
+                    SelectIDpkRowX(idpkx);
                     MessageBox.Show("Updated Successfully", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ConnectionStringParameters.CloseConnection();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -215,9 +287,9 @@ namespace HostelApp.HR
 
                 }
             }
-            catch
+            catch(Exception ex) 
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -225,15 +297,18 @@ namespace HostelApp.HR
         {
             try
             {
+                int previousSelectedRowHandle = gdvMain.FocusedRowHandle; // Save the previously selected row
+
                 SqlCommand comdx = new SqlCommand("select * from vwHrPeoples", ConnectionStringParameters.connStrx);
                 SqlDataAdapter dx = new SqlDataAdapter(comdx);
                 DataTable dt = new DataTable();
                 dx.Fill(dt);
                 gdcMain.DataSource = dt;
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
 
         }
@@ -259,9 +334,59 @@ namespace HostelApp.HR
                 txtIDNo.Text = gdvMain.GetFocusedRowCellValue("pplIDNo").ToString();
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
+            }
+        }
+
+
+        private void DisplayDataX(int rowHandle)
+        {
+            if (rowHandle >= 0 && rowHandle < gdvMain.DataRowCount)
+            {
+                gdvMain.FocusedRowHandle = rowHandle;
+                try
+                {
+                    txtFirstName.Text = gdvMain.GetFocusedRowCellValue("pplFirstName").ToString();
+                    txtLastName.Text = gdvMain.GetFocusedRowCellValue("pplLastName").ToString();
+                    txtOtherName.Text = gdvMain.GetFocusedRowCellValue("pplOtherName").ToString();
+                    cbxGender.Text = gdvMain.GetFocusedRowCellValue("gndNamex").ToString();
+                    cbxIDType.Text = gdvMain.GetFocusedRowCellValue("idtName").ToString();
+                    cbxOccupation.Text = gdvMain.GetFocusedRowCellValue("ocpName").ToString();
+                    cbxTitle.Text = gdvMain.GetFocusedRowCellValue("tltShtName").ToString();
+                    dteDoB.Text = gdvMain.GetFocusedRowCellValue("pplDoB").ToString();
+                    txtEmergencyContact.Text = gdvMain.GetFocusedRowCellValue("pplEmergencyContact").ToString();
+                    txtParentContact.Text = gdvMain.GetFocusedRowCellValue("pplParentContact").ToString();
+                    txtParentDetails.Text = gdvMain.GetFocusedRowCellValue("pplParentDetails").ToString();
+                    txtRmks.Text = gdvMain.GetFocusedRowCellValue("pplRmks").ToString();
+                    txtMobileNo.Text = gdvMain.GetFocusedRowCellValue("pplMobileNo").ToString();
+                    txtEmail.Text = gdvMain.GetFocusedRowCellValue("pplEmail").ToString();
+                    txtIDNo.Text = gdvMain.GetFocusedRowCellValue("pplIDNo").ToString();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.GetType()} says {ex.Message}");
+                }
+                idpkx = (int)gdvMain.GetFocusedRowCellValue("pplIDpk");
+            }
+        }
+
+        private void SearchGetData()
+        {
+            try
+            {
+                string sql = $"select * from vwHrPeoples where [pplLastName]like '%{txtSearch.Text}%'or [pplOtherName] like '%{txtSearch.Text}%'or[pplFirstName]like '%{txtSearch.Text}%'or [pplDoB]like '%{txtSearch.Text}%'or[pplIDNo] like '%{txtSearch.Text}%'or [pplIDType] like '%{txtSearch.Text}%'or [pplMobileNo] like '%{txtSearch.Text}%'or [pplEmail] like '%{txtSearch.Text}%'or [pplParentContact] like '%{txtSearch.Text}%'or[pplEmergencyContact] like '%{txtSearch.Text}%'or tltShtName like '%{txtSearch.Text}%'or [pplRmks] like '%{txtSearch.Text}%'or gndName like '%{txtSearch.Text}%' or ocpName like '%{txtSearch.Text}%' ";
+                SqlCommand comdx = new SqlCommand(sql, ConnectionStringParameters.connStrx);
+                SqlDataAdapter dx = new SqlDataAdapter(comdx);
+                DataTable dt = new DataTable();
+                dx.Fill(dt);
+                gdcMain.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -295,10 +420,10 @@ namespace HostelApp.HR
             PopComboBox("tltShtName", cbxTitle, "tblGenTitles");
 
             //GetInitialData Remember to make into a function
+            GetInitialData(cbxGender, "tblGenGenders", "gndIDpk", "gndName", selectedGenderID);
             string selectedGender = cbxGender.Text;
             int genderID = GetID(selectedGender, "tblGenGenders", "gndIDpk", "gndName");
             selectedGenderID = genderID;
-
             string selectedOccupation = cbxOccupation.Text;
             int occupationID = GetID(selectedOccupation, "tblGenOccupation", "ocpIDpk", "ocpName");
             selectedOccupationID = occupationID;
@@ -313,6 +438,13 @@ namespace HostelApp.HR
 
         }
 
+        private void GetInitialData(ComboBoxEdit textBox , string tableName ,string primaryKey , string columnName , int selectedID)
+        {
+            //GetInitialData Remember to make into a function
+            string selectedProperty = textBox.Text;
+            int propertyID = GetID(selectedProperty,tableName, primaryKey, columnName);
+            selectedID = propertyID;
+        }
         private void comboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBoxEdit comboBox = (ComboBoxEdit)sender;
@@ -349,6 +481,19 @@ namespace HostelApp.HR
             selectedIDTypeID = idtID;
         }
 
+        private void cbxTitle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            ComboBoxEdit comboBox = (ComboBoxEdit)sender;
+            string selectedTitle = comboBox.SelectedItem.ToString();
+
+            // Retrieve the corresponding gender ID from the database
+            int titleID = GetID(selectedTitle, "tblGenTitles", "tltIDpk", "tltShtName");
+
+            // Store the gender ID
+            selectedTitleID = titleID;
+        }
+
         private void btnNew_Click(object sender, EventArgs e)
         {
             try
@@ -363,21 +508,7 @@ namespace HostelApp.HR
                     btnNew.Image = HostelApp.Properties.Resources.delete_16x16;
                     btnNew2.Text = "Cancel";
                     btnNew2.Image = HostelApp.Properties.Resources.delete_16x16;
-                    txtFirstName.Text = string.Empty;
-                    txtLastName.Text = string.Empty;
-                    txtOtherName.Text = string.Empty;
-                    cbxGender.Text = string.Empty;
-                    txtRmks.Text = string.Empty;
-                    txtMobileNo.Text = string.Empty;
-                    txtEmail.Text = string.Empty;
-                    dteDoB.Text = string.Empty;
-                    txtIDNo.Text = string.Empty;
-                    cbxIDType.Text = string.Empty;
-                    txtParentDetails.Text = string.Empty;
-                    txtParentContact.Text = string.Empty;
-                    txtEmergencyContact.Text = string.Empty;
-                    cbxOccupation.Text = string.Empty;
-                    cbxTitle.Text = string.Empty;
+                    EmptyTextFields();
                     txtFirstName.Focus();
 
                 }
@@ -386,22 +517,7 @@ namespace HostelApp.HR
                     irud = 'r';
                     GetData();
                     DisplayData();
-                    txtFirstName.Enabled = false;
-                    txtLastName.Enabled = false;
-                    txtOtherName.Enabled = false;
-                    cbxGender.Enabled = false;
-                    txtRmks.Enabled = false;
-                    txtMobileNo.Enabled = false;
-                    txtEmail.Enabled = false;
-                    txtAddress.Enabled = false;
-                    dteDoB.Enabled = false;
-                    txtIDNo.Enabled = false;
-                    cbxIDType.Enabled = false;
-                    txtParentDetails.Enabled = false;
-                    txtParentContact.Enabled = false;
-                    txtEmergencyContact.Enabled = false;
-                    cbxOccupation.Enabled = false;
-                    cbxTitle.Enabled = false;
+                    DisableControls();
                     btnSave.Enabled = false;
                     btnNew.Enabled = true;
                     btnSave.Enabled = false;
@@ -412,9 +528,10 @@ namespace HostelApp.HR
                     btnNew2.Image = HostelApp.Properties.Resources.newemployee_16x16;
                 }
             }
-            catch (Exception)
-            {
-                throw;
+            catch (Exception ex) 
+            { 
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}"); 
+                
             }
         }
 
@@ -433,9 +550,9 @@ namespace HostelApp.HR
                 }
 
             }
-            catch
-            {
-                throw;
+            catch(Exception ex) 
+            { 
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -472,16 +589,18 @@ namespace HostelApp.HR
                         comdx.Parameters.AddWithValue("@pplTitleIDfk", selectedTitleID);
                         comdx.ExecuteNonQuery();
                         GetData();
-                        DisplayData();
-                        SelectIDpkRow();
+                        SelectIDpkRowX(idpkx);
+                        //DisplayDataX(gdvMain.FocusedRowHandle);
                         MessageBox.Show("Saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
                 throw;
+
             }
         }
 
@@ -499,20 +618,7 @@ namespace HostelApp.HR
                     btnNew.Image = HostelApp.Properties.Resources.delete_16x16;
                     btnNew2.Text = "Cancel";
                     btnNew2.Image = HostelApp.Properties.Resources.delete_16x16;
-                    txtFirstName.Text = string.Empty;
-                    txtLastName.Text = string.Empty;
-                    txtOtherName.Text = string.Empty;
-                    cbxGender.Text = string.Empty;
-                    txtRmks.Text = string.Empty;
-                    txtMobileNo.Text = string.Empty;
-                    txtEmail.Text = string.Empty;
-                    dteDoB.Text = string.Empty;
-                    txtIDNo.Text = string.Empty;
-                    cbxIDType.Text = string.Empty;
-                    txtParentDetails.Text = string.Empty;
-                    txtParentContact.Text = string.Empty;
-                    txtEmergencyContact.Text = string.Empty;
-                    cbxOccupation.Text = string.Empty;
+                    EmptyTextFields();
                     txtFirstName.Focus();
                 }
                 else if (irud == 'i')
@@ -520,6 +626,7 @@ namespace HostelApp.HR
                     irud = 'r';
                     GetData();
                     DisplayData();
+                    DisableControls();
                     btnSave.Enabled = false;
                     btnSave.Enabled = false;
                     btnEdit.Enabled = true;
@@ -529,8 +636,9 @@ namespace HostelApp.HR
                     btnNew2.Image = HostelApp.Properties.Resources.newemployee_16x16;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
                 throw;
             }
 
@@ -560,22 +668,8 @@ namespace HostelApp.HR
             else if (irud == 'u')
             {
                 irud = 'r';
+                DisableControls();
                 btnSave.Enabled = false;
-                txtFirstName.Enabled = false;
-                txtLastName.Enabled = false;
-                txtOtherName.Enabled = false;
-                cbxGender.Enabled = false;
-                txtRmks.Enabled = false;
-                txtMobileNo.Enabled = false;
-                txtEmail.Enabled = false;
-                txtAddress.Enabled = false;
-                dteDoB.Enabled = false;
-                txtIDNo.Enabled = false;
-                cbxIDType.Enabled = false;
-                txtParentDetails.Enabled = false;
-                txtParentContact.Enabled = false;
-                txtEmergencyContact.Enabled = false;
-                cbxOccupation.Enabled = false;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
                 btnSave.Enabled = false;
@@ -584,27 +678,18 @@ namespace HostelApp.HR
                 btnSave.Text = "Save";
                 btnEdit.Text = "Edit";
                 btnEdit.Image = HostelApp.Properties.Resources.edit_16x16;
-
-
             }
         }
 
         private void gdvMain_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            DisplayData();
+            int rowHandle = gdvMain.FocusedRowHandle;
+            DisplayDataX(rowHandle);
         }
 
-        private void cbxTitle_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-
-            ComboBoxEdit comboBox = (ComboBoxEdit)sender;
-            string selectedTitle = comboBox.SelectedItem.ToString();
-
-            // Retrieve the corresponding gender ID from the database
-            int titleID = GetID(selectedTitle, "tblGenTitles", "tltIDpk", "tltShtName");
-
-            // Store the gender ID
-            selectedTitleID = titleID;
+            SearchGetData();
         }
     }
 }
