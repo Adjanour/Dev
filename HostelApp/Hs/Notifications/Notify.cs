@@ -71,15 +71,6 @@ namespace HostelApp.Hs.Notifications
 
         private static void notification (string messages , string fname)
             {
-            var accountSid = "AC2c8d38231bd37d658e1ed67ad76da47e";
-            var authToken = "f348f62a9f397ff23c7a9ba6b4c87974";
-            TwilioClient.Init(accountSid, authToken);
-
-        var messageOptions = new CreateMessageOptions(
-          new PhoneNumber("+233202756326"));
-            messageOptions.From = new PhoneNumber("+16183503716");
-            messageOptions.Body = $"Hello {fname}, {messages}";
-
 
         var message = MessageResource.Create(messageOptions);
             Console.WriteLine(message.Body);
