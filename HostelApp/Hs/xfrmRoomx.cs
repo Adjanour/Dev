@@ -409,18 +409,18 @@ namespace HostelApp.Hs
             DisableControls();
             GetData();
             DisplayData();
-            PopComboBox("hstName", cbxHostel, "tblHsHostels");
-            PopComboBox("blcBlockName", cbxBlock, "tblHsBlocks");
-            PopComboBox("flrFloorName", cbxFloor, "tblHsFloors");
-            PopComboBox("pplName", cbxOccupant, "vwHrPeoples");
-            PopComboBox("gndName", cbxGender, "tblGenGenders");
-            PopComboBox("rmtRoomTypeName", cbxRoomType, "tblHsRoomTypes");
-            GetInitialData(cbxHostel, "tblHsHostels", "hstIDpk", "hstName", ref selectedHostelID);
-            GetInitialData(cbxBlock, "tblHsBlocks", "blcBlockIDpk", "blcBlockName", ref selectedBlockID);
-            GetInitialData(cbxFloor, "tblHsFloors", "flrFloorIDpk", "flrFloorName", ref selectedFloorID);
-            GetInitialData(cbxOccupant, "vwHrPeoples", "pplIDpk", "pplName",ref selectedOccupantID);
-            GetInitialData(cbxGender, "tblGenGenders", "gndIDpk", "gndName", ref selectedGenderID);
-            GetInitialData(cbxRoomType, "tblHsRoomTypes", "rmtIDpk", "rmtRoomTypeName", ref selectedRoomTypeID);
+            //PopComboBox("hstName", cbxHostel, "tblHsHostels");
+            //PopComboBox("blcBlockName", cbxBlock, "tblHsBlocks");
+            //PopComboBox("flrFloorName", cbxFloor, "tblHsFloors");
+            //PopComboBox("pplName", cbxOccupant, "vwHrPeoples");
+            //PopComboBox("gndName", cbxGender, "tblGenGenders");
+            //PopComboBox("rmtRoomTypeName", cbxRoomType, "tblHsRoomTypes");
+            //GetInitialData(cbxHostel, "tblHsHostels", "hstIDpk", "hstName", ref selectedHostelID);
+            //GetInitialData(cbxBlock, "tblHsBlocks", "blcBlockIDpk", "blcBlockName", ref selectedBlockID);
+            //GetInitialData(cbxFloor, "tblHsFloors", "flrFloorIDpk", "flrFloorName", ref selectedFloorID);
+            //GetInitialData(cbxOccupant, "vwHrPeoples", "pplIDpk", "pplName",ref selectedOccupantID);
+            //GetInitialData(cbxGender, "tblGenGenders", "gndIDpk", "gndName", ref selectedGenderID);
+            //GetInitialData(cbxRoomType, "tblHsRoomTypes", "rmtIDpk", "rmtRoomTypeName", ref selectedRoomTypeID);
         }
 
         private void btnNew_Click_1(object sender, EventArgs e)

@@ -57,7 +57,7 @@ namespace HostelApp.Hs
             }
             catch (Exception)
             {
-                throw;
+                
             }
         }
 
@@ -92,9 +92,9 @@ namespace HostelApp.Hs
                     txtRemarks.Text = gdvMain.GetFocusedRowCellValue("hstRmks").ToString();
                     txtHostelLocation.Text = gdvMain.GetFocusedRowCellValue("hstLocation").ToString();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    MessageBox.Show($"{ex.GetType()} says {ex.Message}");
                 }
             }
         }
@@ -118,9 +118,10 @@ namespace HostelApp.Hs
                 // Return true if a matching record is found (count > 0), false otherwise
                 return count > 0;
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
+                return false;
             }
         }
 
@@ -149,9 +150,9 @@ namespace HostelApp.Hs
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -184,9 +185,9 @@ namespace HostelApp.Hs
 
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -236,9 +237,9 @@ namespace HostelApp.Hs
                 }
                 
             }
-            catch (Exception)
-            {
-                throw;
+            catch(Exception ex)
+                {
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
 
         }
@@ -289,9 +290,9 @@ namespace HostelApp.Hs
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-            throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
 
         }
@@ -313,9 +314,9 @@ namespace HostelApp.Hs
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -415,9 +416,9 @@ namespace HostelApp.Hs
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 

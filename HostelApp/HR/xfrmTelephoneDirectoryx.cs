@@ -40,9 +40,9 @@ namespace HostelApp.HR
                 reader.Close();
                 ConnectionStringParameters.CloseConnection();
             }
-            catch 
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -94,9 +94,10 @@ namespace HostelApp.HR
                 // Return true if a matching record is found (count > 0), false otherwise
                 return count > 0;
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
+                return false;
             }
         }
 
@@ -126,9 +127,9 @@ namespace HostelApp.HR
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -163,10 +164,10 @@ namespace HostelApp.HR
 
                 }
             }
-            catch
-            {
-                throw;
-            }
+            catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.GetType()} says {ex.Message}");
+                }
         }
 
         private void GetData()
@@ -179,9 +180,9 @@ namespace HostelApp.HR
                 dx.Fill(dt);
                 gdcMain.DataSource = dt;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
 
         }
@@ -200,9 +201,9 @@ namespace HostelApp.HR
 
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -305,9 +306,9 @@ namespace HostelApp.HR
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 
@@ -355,9 +356,9 @@ namespace HostelApp.HR
                     btnNew.Image = HostelApp.Properties.Resources.newemployee_16x16;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"{ex.GetType()} says {ex.Message}");
             }
         }
 

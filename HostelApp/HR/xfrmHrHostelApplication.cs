@@ -414,8 +414,8 @@ namespace HostelApp.HR
             btnSave.Enabled = false;
             GetData();
             DisplayData();
-            PopComboBox("gndName",cbxGender,"tblGenGenders");
-            PopComboBox("ocpName", cbxOccupation, "tblGenOccupation");
+            PopComboBox("gndName", cbxGender, "tblGenGenders");
+            ////PopComboBox("ocpName", cbxOccupation, "tblGenOccupation");
             PopComboBox("idtName", cbxIDType, "tblGenIDType");
             PopComboBox("tltShtName", cbxTitle, "tblGenTitles");
 
@@ -424,9 +424,9 @@ namespace HostelApp.HR
             string selectedGender = cbxGender.Text;
             int genderID = GetID(selectedGender, "tblGenGenders", "gndIDpk", "gndName");
             selectedGenderID = genderID;
-            string selectedOccupation = cbxOccupation.Text;
-            int occupationID = GetID(selectedOccupation, "tblGenOccupation", "ocpIDpk", "ocpName");
-            selectedOccupationID = occupationID;
+            //string selectedOccupation = cbxOccupation.Text;
+            //int occupationID = GetID(selectedOccupation, "tblGenOccupation", "ocpIDpk", "ocpName");
+            //selectedOccupationID = occupationID;
 
             string selectedIDType = cbxIDType.Text;
             int IDTypeID = GetID(selectedIDType, "tblGenIDType", "idtIDpk", "idtName");
@@ -444,6 +444,7 @@ namespace HostelApp.HR
             string selectedProperty = textBox.Text;
             int propertyID = GetID(selectedProperty,tableName, primaryKey, columnName);
             selectedID = propertyID;
+            int ID = selectedID;
         }
         private void comboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
         {
